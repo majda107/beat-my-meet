@@ -115,19 +115,5 @@ dist/
 tmp/
 temp/
 
-### Web ###
-*.asp
-*.cer
-*.csr
-*.css
-*.htm
-*.html
-*.js
-*.jsp
-*.php
-*.rss
-*.wasm
-*.wat
-*.xhtml
 
 # End of https://www.gitignore.io/api/web,node,code
