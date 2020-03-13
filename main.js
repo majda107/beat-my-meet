@@ -133,19 +133,35 @@ function connectUsers(users) {
   }
 }
 
+function nestedJoin(batch = 1) {
+  createUsers("Pavel Pesat lol3", [], 0, batch, (users) => {
+    connectUsers(users)
+    for(let user of users) {
+      setTimeout(() => {
+
+        nestedJoin(batch)
+
+        // user.window.webContents.executeJavaScript('function main() { let children = document.body.children; for(let child of children) { if(child.tagName == "DIV") { console.log("Removing child..."); console.log(child); child.remove(); } } } main();')
+        // user.window.webContents.executeJavaScript('function checkChildren() { console.log("Searching for kids..."); for(let child of document.body.children) { if(child.tagName == "AUDIO") { setTimeout(() => { removeChildren(); }, 15000); return; } } setTimeout(() => checkChildren(), 500) } function removeChildren() { for(let child of document.body.children) { if(child.tagName == "DIV") { console.log("Removing child..."); console.log(child); child.remove(); } } } function main() { checkChildren() } main();')
+        user.window.webContents.executeJavaScript('function pee(delay) { let sel = document.querySelectorAll(".kFwPee"); if(sel.length >= 1) { sel[0].remove() } else { setTimeout(() => { pee(delay); }, delay) }  } function main() { pee(500); } main();')
+      }, 5000)
+    }
+  })
+}
+
 function createWindow () {
   // Create the browser window.
   // for(let i = 0; i < 4; i++) {
   //   connectUser("Matatko lol")
   // }
 
-  // connectUser("Matatko lol")
 
-  createUsers("Matatko lol2", [], 0, 15, (users) => {
-    console.log(`${users.length} users created!`)
-    connectUsers(users)
-  })
+  // createUsers("Matatko lol2", [], 0, 15, (users) => {
+  //   console.log(`${users.length} users created!`)
+  //   connectUsers(users)
+  // })
 
+   nestedJoin(1)
 }
 
 // This method will be called when Electron has finished
