@@ -1,6 +1,6 @@
 # Beat-my-meet (ONLY FOR TESTING)
 
-**The one that actually may fry google meet session**
+**The one that may actually fry google meet session**
 
 ## To Use
 
